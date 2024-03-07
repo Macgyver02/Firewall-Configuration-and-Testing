@@ -1,0 +1,31 @@
+pfSense is a free and open-source firewall distribution based on FreeBSD. Here's an example of how to configure firewall rules using the pfSense web interface:
+
+Navigate to Firewall > Rules and click on the appropriate interface (e.g., WAN, LAN).
+Click on the "Add" button to create a new rule.
+Configure the rule settings, such as the protocol (TCP, UDP, or both), source and destination addresses or networks, ports, and the action (Pass or Block).
+For example, to allow HTTP and HTTPS traffic from the Internet to a web server on the LAN subnet (192.168.1.0/24), you can create a rule with the following settings:
+
+
+Action: Pass
+Interface: WAN
+Protocol: TCP
+Source: Any
+Destination: 192.168.1.0/24
+Destination Port Range: 80,443
+
+Click "Save" to apply the rule.
+To test the firewall rules, you can use various tools and commands:
+
+Use the nmap command to scan for open ports from the Internet or another network:
+
+nmap -p- 192.168.1.100 # Scan all ports on the web server
+
+
+Use the tcpdump command to capture and analyze network traffic:
+
+tcpdump -ni em0 # Capture packets on the WAN interface
+
+Use a web browser or curl command to test HTTP/HTTPS access:
+
+curl http://192.168.1.100
+curl https://192.168.1.100
